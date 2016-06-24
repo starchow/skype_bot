@@ -11,4 +11,12 @@ module SkypeBot
   def configure
     yield(Config) if block_given?
   end
+
+  def message(uid, content)
+    Activity.text_message(uid, content)
+  end
+
+  def parser(data)
+    Parser.new(data).execute
+  end
 end
