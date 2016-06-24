@@ -3,6 +3,7 @@ require 'typhoeus'
 require 'skype_bot/activity'
 require 'skype_bot/auth'
 require 'skype_bot/config'
+require 'skype_bot/parser'
 require 'skype_bot/version'
 
 module SkypeBot
