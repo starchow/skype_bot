@@ -3,21 +3,18 @@ module SkypeBot
     attr_accessor :payload
 
     def initialize(data)
-      @payload = data['_json']
+      @payload = data['skype']
     end
 
     def execute
-      payload.map do |event|
-        {
-          action: event['action'],
-          type: event['activity'].underscore,
-          from: event['from'],
-          display_name: event['fromDisplayName'],
-          to: event['to'],
-          time: Time.parse(event['time']),
-          content: event['content']
-        }
-      end
+      {
+        type: payload['type'].underscore,
+        from: payload['from']['id'],
+        display_name: payload['from']['name'],
+        to: payload['recipient']['id'],
+        time: Time.parse(payload['timestamp']),
+        content: payload['text']
+      }
     end
   end
 end
