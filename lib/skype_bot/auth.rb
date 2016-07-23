@@ -6,7 +6,7 @@ module SkypeBot
 
     # NOTE: minus 5 seconds to prevent token expire
     def get_token
-      if @token && @valid_until && @valid_until > Time.current - 5.seconds
+      if @token && @valid_until && @valid_until > Time.current + 10.seconds
         @token
       else
         renew_token
