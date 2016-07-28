@@ -1,5 +1,6 @@
 require 'typhoeus'
 
+require 'skype_bot/card'
 require 'skype_bot/activity'
 require 'skype_bot/auth'
 require 'skype_bot/config'
@@ -14,7 +15,11 @@ module SkypeBot
   end
 
   def message(uid, content)
-    Activity.text_message(uid, content)
+    Activity.new(uid).sent(content)
+  end
+
+  def card(format, uid, payload)
+    Card.call(format, uid, payload)
   end
 
   def parser(data)
