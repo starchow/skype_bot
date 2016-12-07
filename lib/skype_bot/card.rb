@@ -7,8 +7,8 @@ module SkypeBot
   module Card
     extend self
 
-    def call(format, uid, payload)
-      Cards.const_get(format.to_s.classify).new(uid).sent(payload)
+    def call(format, event, payload)
+      Cards.const_get(format.to_s.classify).new(event).sent(payload)
     end
   end
 end

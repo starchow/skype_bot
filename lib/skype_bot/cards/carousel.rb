@@ -5,15 +5,8 @@ module SkypeBot
       def payload(attachments)
         {
           type: 'message',
-          agent: 'botbuilder',
-          source: 'skype',
-          address: {
-            channelId: 'skype',
-            user: { id: uid },
-            bot: { id: "#{Config.skype_number}:#{Config.app_id}" },
-            serviceUrl: 'https://skype.botframework.com',
-            useAuth: true
-          },
+          from: { id: event['to'], name: event['bot_name'] },
+          recipient: { id: event['from'] },
           textFormat: 'xml',
           attachmentLayout: 'carousel',
           attachments: attachments

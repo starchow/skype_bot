@@ -2,6 +2,7 @@ require 'typhoeus'
 
 require 'skype_bot/card'
 require 'skype_bot/activity'
+require 'skype_bot/uri'
 require 'skype_bot/auth'
 require 'skype_bot/config'
 require 'skype_bot/parser'
@@ -14,12 +15,12 @@ module SkypeBot
     yield(Config) if block_given?
   end
 
-  def message(uid, content)
-    Activity.new(uid).sent(content)
+  def message(event, content)
+    Activity.new(event).sent(content)
   end
 
-  def card(format, uid, payload)
-    Card.call(format, uid, payload)
+  def card(event, format, payload)
+    Card.call(event, format, payload)
   end
 
   def parser(data)

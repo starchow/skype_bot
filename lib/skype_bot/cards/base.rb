@@ -1,12 +1,10 @@
 module SkypeBot
   module Cards
     class Base
-      CONVERSATION_URL = 'https://skype.botframework.com/v3/conversations'
+      attr_accessor :event
 
-      attr_accessor :uid
-
-      def initialize(uid)
-        @uid = uid
+      def initialize(event)
+        @event = event
       end
 
       def sent(data)
@@ -19,21 +17,20 @@ module SkypeBot
       end
 
       def activity_url
-        "#{CONVERSATION_URL}/#{uid}/activities"
+        end_point = Uri.join(event['service_url'], Config.conversation_path, event['conversation_id'], Config.activity_path)
+
+        if event['id'].present? && event['channel_id'] != 'skype'
+          end_point + '/' + event['id']
+        else
+          end_point
+        end
       end
 
       def payload(attachments)
         {
           type: 'message',
-          agent: 'botbuilder',
-          source: 'skype',
-          address: {
-            channelId: 'skype',
-            user: { id: uid },
-            bot: { id: "#{Config.skype_number}:#{Config.app_id}" },
-            serviceUrl: 'https://skype.botframework.com',
-            useAuth: true
-          },
+          from: { id: event['to'], name: event['bot_name'] },
+          recipient: { id: event['from'] },
           textFormat: 'xml',
           attachments: attachments
         }
