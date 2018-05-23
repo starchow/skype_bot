@@ -2,7 +2,7 @@ module SkypeBot
   module Auth
     extend self
 
-    OAUTH_URL = 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+    OAUTH_URL = 'https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token'
 
     # NOTE: minus 5 seconds to prevent token expire
     def get_token

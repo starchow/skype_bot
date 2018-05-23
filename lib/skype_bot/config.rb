@@ -7,7 +7,7 @@ module SkypeBot
     mattr_accessor :skype_number
 
     mattr_accessor :scope
-    @@scope = 'https://graph.microsoft.com/.default'
+    @@scope = 'https://api.botframework.com/.default'
 
     mattr_accessor :conversation_path
     @@conversation_path = '/v3/conversations'
