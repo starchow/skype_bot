@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'typhoeus', '~> 1.0'
   spec.add_dependency 'faraday', '~> 0.9.2'
+  spec.add_dependency 'activesupport'
 end

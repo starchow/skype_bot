@@ -1,4 +1,6 @@
 require 'typhoeus'
+require 'active_support'
+require 'json'
 
 require 'skype_bot/card'
 require 'skype_bot/activity'

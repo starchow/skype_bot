@@ -6,7 +6,7 @@ module SkypeBot
 
     # NOTE: minus 5 seconds to prevent token expire
     def get_token
-      if @token && @valid_until && @valid_until > Time.current + 10.seconds
+      if @token && @valid_until && @valid_until > Time.now + 10
         @token
       else
         renew_token
@@ -17,7 +17,7 @@ module SkypeBot
       response = Typhoeus.post(OAUTH_URL, body: auth_params)
       response_body = JSON.parse(response.body)
 
-      @valid_until = Time.current + response_body['expires_in'].seconds
+      @valid_until = Time.now + response_body['expires_in']
       @token = response_body['access_token']
     end
 

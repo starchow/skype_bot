@@ -18,7 +18,7 @@ module SkypeBot
     def activity_url
       end_point = Uri.join(event['service_url'], Config.conversation_path, event['conversation_id'], Config.activity_path)
 
-      if event['id'].present? && event['channel_id'] != 'skype'
+      if !(event['id'].nil? || event['id'].empty?) && event['channel_id'] != 'skype'
         end_point + '/' + event['id']
       else
         end_point
