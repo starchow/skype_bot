@@ -24,6 +24,12 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+Run this in your terminal to send a message to a Skype conversation
+
+```bash
+$ SKYPE_APP_ID="skype_app_id" SKYPE_APP_SECRET="skype_app_password" skype_bot message "message content" -c "skype_conversation_id"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

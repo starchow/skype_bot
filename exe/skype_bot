@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'skype_bot'
+require 'skype_bot/cli'
+
+SkypeBot::CLI.start(ARGV)
